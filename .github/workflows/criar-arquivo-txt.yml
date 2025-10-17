@@ -1,0 +1,11 @@
+name: Criar arquivo txt com data
+on: workflow_dispatch
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Criar arquivo arquivo.txt com data atual
+        run: echo "Arquivo criado em $(date)" > arquivo.txt # escreve o texto dentro do arquivo (sobrescreve)
+
+      - name: Mostrar conteúdo do arquivo 
+        run: cat arquivo.txt # cat ,mostra o conteudo dentro desse arquivo
