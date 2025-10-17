@@ -1,0 +1,8 @@
+name: Contador de quantidade de arquivo html
+on: workflow_dispatch
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Contando quantidade de arquivo html
+        run: echo "Esse arquivo possui $(echo *.html | wc -w) arquivos html"
