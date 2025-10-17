@@ -1,0 +1,9 @@
+name: calcular 2 + 2
+on: workflow_dispatch
+jobs:
+  first-job: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: calculando 2+2
+        run: "echo 2 + 2 é igual a: $((2 + 2))"
+
