@@ -1,8 +1,12 @@
 name: Mostrar date e hora
-on: push
+on: 
+  workflow_dispatch:
+
 jobs:
   first-job:
     runs-on: ubuntu-latest
     steps:
-      - name: mostrar-data-hora-atuais
-        run: date
+      - name: Mostrar data e hora atuais
+        run: |
+          export TZ="America/Sao_Paulo"
+          date

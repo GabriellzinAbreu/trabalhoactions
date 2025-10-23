@@ -7,16 +7,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Mostrar data e hora
-        run: date
+        run: |
+          export TZ="America/Sao_Paulo"
+          date
 
       - name: Mostrar usuário do push
         run: echo "Push feito por ${{ github.actor }}"
 
       - name: Contar arquivos HTML
-        run: echo "Arquivos HTML $(find . -name '*.html' | wc -l)"
+        run: echo "Esse arquivo possui $(echo *.html | wc -w) arquivos html"
 
       - name: Contar arquivos CSS
-        run: echo "Arquivos CSS $(find . -name '*.css' | wc -l)"
+        run: echo "Esse arquivo possui $(echo *.css | wc -w) arquivos CSS"
 
       - name: Contar arquivos JS
-        run: echo "Arquivos JS $(find . -name '*.js' | wc -l)"
+        run: echo "Esse arquivo possui $(echo *.js | wc -w) arquivos JS"

@@ -1,11 +1,13 @@
 name: Sem sequência #dentro de jobs separados
-on: push
+on: workflow_dispatch
 
 jobs:
   data:
     runs-on: ubuntu-latest
     steps:
-      - run: date
+      - run: |
+          export TZ="America/Sao_Paulo"
+          date
 
   usuario:
     runs-on: ubuntu-latest
@@ -15,6 +17,6 @@ jobs:
   contar:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "HTMLs $(find . -name '*.html' | wc -l)"
-      - run: echo "CSSs $(find . -name '*.css' | wc -l)"
-      - run: echo "JSs $(find . -name '*.js' | wc -l)"
+      - run: echo "Esse arquivo possui $(echo *.html | wc -w) arquivos html"
+      - run: echo "Esse arquivo possui $(echo *.css | wc -w) arquivos CSS"
+      - run: echo "Esse arquivo possui $(echo *.js | wc -w) arquivos JS"
