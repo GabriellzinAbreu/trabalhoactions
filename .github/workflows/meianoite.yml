@@ -1,18 +1,22 @@
 name: MeiaNoite
-on: workflow_dispatch
+
+on:
+  schedule:
+    - cron: '0 3 * * *'   # precisa adiantar 3 horas por causa do horário utc = meia-noite no Brasil
+  workflow_dispatch:       # rodar manualmente pra testar os If 
 
 jobs:
-  teste:
+  first-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Rodar só de meia-noite
+      - name: Rodar só à meia-noite
         run: |
-          # Define o fuso horário para São Paulo
-          export TZ="America/Sao_Paulo"
+          export TZ="America/Sao_Paulo"  # define o fuso horário para São Paulo
 
           hora=$(date +%H)  # pega a hora (00–23)
-          if (( hora == 0 )); then
-            echo "É meia-noite! (Agora são $hora horas)"
+          echo "Hora atual: $hora"
+          if [ "$hora" -eq 0 ]; then
+            echo "É meia-noite!"
           else
-            echo "Agora não é meia-noite. São $hora horas"
+            echo "Agora não é meia-noite. São $hora horas."
           fi

@@ -1,5 +1,9 @@
 name: Rodar só sábado
-on: workflow_dispatch
+
+on:
+  schedule:
+    - cron: '0 3 * * 6'   # 03:00 UTC = meia-noite em Brasília, todo sábado
+  workflow_dispatch:       # permite rodar manualmente
 
 jobs:
   first-job:
@@ -7,14 +11,13 @@ jobs:
     steps:
       - name: Checar se é sábado (horário Brasil)
         run: |
-          # Define o fuso horário para São Paulo
           export TZ="America/Sao_Paulo"
-
+          
           # Pega o dia da semana (1 = segunda, 6 = sábado, 7 = domingo)
           dia=$(date +%u)
 
           if (( dia == 6 )); then
-            echo "Hoje é sábado "
+            echo "Hoje é sábado!"
           else
-            echo "Hoje não é sábado "
+            echo "Hoje não é sábado."
           fi
