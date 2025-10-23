@@ -5,4 +5,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Contando quantidade de arquivo html
-        run: echo "Esse arquivo possui $(echo *.html | wc -w) arquivos html"
+        run: echo "Esse arquivo possui $(echo *.html | wc -w) arquivos html" # wc -w conta palavras, cada arquivo html é uma palavra

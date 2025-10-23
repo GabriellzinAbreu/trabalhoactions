@@ -1,0 +1,22 @@
+name: Ação em sequência #dentro de um único job
+
+on: workflow_dispatch
+
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mostrar data e hora
+        run: date
+
+      - name: Mostrar usuário do push
+        run: echo "Push feito por ${{ github.actor }}"
+
+      - name: Contar arquivos HTML
+        run: echo "Arquivos HTML $(find . -name '*.html' | wc -l)"
+
+      - name: Contar arquivos CSS
+        run: echo "Arquivos CSS $(find . -name '*.css' | wc -l)"
+
+      - name: Contar arquivos JS
+        run: echo "Arquivos JS $(find . -name '*.js' | wc -l)"

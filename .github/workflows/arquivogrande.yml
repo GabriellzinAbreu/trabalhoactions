@@ -1,0 +1,13 @@
+name: ArquivosGrandes
+on: workflow_dispatch
+jobs:
+  alerta:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verificar arquivos grandes
+        run: | 
+          if [ -n "$(find . -type f -size +100k)" ]; then # procura arquivos maiores que 100KB
+            echo " Tem arquivo grande. maior que 100KB"
+          else
+            echo "Tudo certo, nao há arquivos grandes."
+          fi

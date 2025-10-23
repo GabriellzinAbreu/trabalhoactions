@@ -1,0 +1,16 @@
+name: Noite
+on: workflow_dispatch
+
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Rodar só de noite
+        run: |
+          hora=$(date +%H)  # Pega a hora atual em formato 24h
+          
+          if (( hora >= 20 || hora < 6 )); then
+            echo "É de noite! (Agora são $hora horas)"
+          else
+            echo "Agora não é noite. (São $hora horas)"
+          fi

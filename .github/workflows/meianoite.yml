@@ -1,0 +1,15 @@
+name: MeiaNoite
+on: workflow_dispatch
+
+jobs:
+  teste:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Rodar só de meia-noite
+        run: |
+          hora=$(date +%H)  # pega a hora (00–23)
+          if (( hora == 0 )); then
+            echo "É meia-noite! (Agora são $hora horas)"
+          else
+            echo "Agora não é meia-noite. São $hora horas."
+          fi

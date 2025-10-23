@@ -1,0 +1,20 @@
+name: Sem sequência #dentro de jobs separados
+on: push
+
+jobs:
+  data:
+    runs-on: ubuntu-latest
+    steps:
+      - run: date
+
+  usuario:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Usuário ${{ github.actor }}"
+
+  contar:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "HTMLs $(find . -name '*.html' | wc -l)"
+      - run: echo "CSSs $(find . -name '*.css' | wc -l)"
+      - run: echo "JSs $(find . -name '*.js' | wc -l)"

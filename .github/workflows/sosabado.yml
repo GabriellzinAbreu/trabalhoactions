@@ -1,0 +1,16 @@
+name: Sabado
+on: workflow_dispatch
+
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Rodar só sábado
+        run: |
+          dia=$(date +%u)   # 1 = segunda, 6 = sábado, 7 = domingo
+          
+          if (( dia == 6 )); then
+            echo "Hoje é sábado!!!"
+          else
+            echo "Hoje não é sábado :( ")"
+          fi #fim do if
