@@ -1,16 +1,20 @@
-name: Sabado
+name: Rodar só sábado
 on: workflow_dispatch
 
 jobs:
   first-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Rodar só sábado
+      - name: Checar se é sábado (horário Brasil)
         run: |
-          dia=$(date +%u)   # 1 = segunda, 6 = sábado, 7 = domingo
-          
+          # Define o fuso horário para São Paulo
+          export TZ="America/Sao_Paulo"
+
+          # Pega o dia da semana (1 = segunda, 6 = sábado, 7 = domingo)
+          dia=$(date +%u)
+
           if (( dia == 6 )); then
-            echo "Hoje é sábado!!!"
+            echo "Hoje é sábado "
           else
-            echo "Hoje não é sábado :( ")"
-          fi #fim do if
+            echo "Hoje não é sábado "
+          fi
